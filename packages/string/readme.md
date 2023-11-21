@@ -47,7 +47,7 @@ The directive is defined as:
 where:
 * `min` : The minimum length allowed 
 * `max` : The maximum length allowed
-* `nows` : *"no only white space"*. ie. the presence of at least one non-whitespace char is required. (`\S`)
+* `nows` : *"not only white space"*. ie. the presence of at least one non-whitespace char is required. (`\S`)
 * `regex` : freeform regular expression, as used by VTL.  
 
 
