@@ -38,6 +38,12 @@ type GenericEntityExample @model()  {
 
 see the package's [`readme.md`](packages/number/readme.md) files for more details
 
+
+## Requirements
+
+These transformers are designed to work in an AWS Amplify project using the GraphQL transformer v2
+
+
 ## Suggestions & Improvements
 
 Please feel free to open a feature request for any additions or improvements you think may add value. I will try to include all those that make sense to me. 

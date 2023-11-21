@@ -1,6 +1,6 @@
 {
    "name": "@graphql-validation-transformers/common",
-   "version": "1.0.2",
+   "version": "1.0.6",
    "description": "Amplify GraphQL field validation common library",
    "main": "dist/index.js",
    "scripts": {

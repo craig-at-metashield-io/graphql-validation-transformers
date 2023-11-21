@@ -12,6 +12,10 @@ type GenericEntityExample @model()  {
 }
 ```
 
+## Requirements
+
+This transformer is designed to work in an AWS Amplify project using the GraphQL transformer v2
+
 ## Setup
 
 1. Install the package

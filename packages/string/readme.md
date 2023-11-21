@@ -14,6 +14,10 @@ type GenericEntityExample @model()  {
 }
 ```
 
+## Requirements
+
+This transformer is designed to work in an AWS Amplify project using the GraphQL transformer v2
+
 ## Setup
 
 1. Install the package
@@ -47,7 +51,7 @@ The directive is defined as:
 where:
 * `min` : The minimum length allowed 
 * `max` : The maximum length allowed
-* `nows` : *"not only white space"*. ie. the presence of at least one non-whitespace char is required. (`\S`)
+* `nows` : *"no white space"*. the string must start and end with non-whitespace characters (`^[^\s].+[^\s]$`)
 * `regex` : freeform regular expression, as used by VTL.  
 
 

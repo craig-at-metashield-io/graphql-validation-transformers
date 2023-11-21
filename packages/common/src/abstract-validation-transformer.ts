@@ -150,11 +150,11 @@ export abstract class AbstractValidationTransformer<T extends IAbstractArguments
    }
 
    protected noWhiteSpace(field: string) {
-      return `${field}.matches("\\S")`;
+      return `${field}.matches('^[^\\s].+[^\\s]$')`;
    }
 
    protected regex(field: string, regex: string) {
-      return `${field}.matches("${regex}")`;
+      return `${field}.matches('${regex}')`;
    }
 
    protected minValue(field: string, min: number) {
