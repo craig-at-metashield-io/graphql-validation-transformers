@@ -97,11 +97,11 @@ describe('StringValidationTransformer', () => {
       });
 
       test('it should produce regex code if it is called with regex param', () => {                  
-         expect(xstring.generateValidation('onefish', { min: 0, max: Number.MAX_SAFE_INTEGER, nows: false, regex: 'XXX' })).toEqual('onefish.matches("XXX")');
+         expect(xstring.generateValidation('onefish', { min: 0, max: Number.MAX_SAFE_INTEGER, nows: false, regex: 'XXX' })).toEqual(`onefish.matches('XXX')`);
       });
 
       test('it should produce lots of code if it is called with many params', () => {                  
-         expect(xstring.generateValidation('onefish', { min: 2, max: 10, nows: true, regex: 'XXX' })).toEqual('onefish.length() >= 2 && onefish.length() <= 10 && onefish.matches("\\S") && onefish.matches("XXX")');
+         expect(xstring.generateValidation('onefish', { min: 2, max: 10, nows: true, regex: 'XXX' })).toEqual(`onefish.length() >= 2 && onefish.length() <= 10 && onefish.matches('^[^\\s].+[^\\s]$') && onefish.matches('XXX')`);
       });
    });
 

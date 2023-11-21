@@ -1,12 +1,12 @@
 {
    "name": "@graphql-validation-transformers/string",
-   "version": "1.0.2",
+   "version": "1.0.6",
    "description": "Amplify GraphQL string field validation",
    "main": "dist/index.js",
    "scripts": {
       "build": "tsc --build"
    },
    "dependencies": {
-      "@graphql-validation-transformers/common": "^1.0.2"
+      "@graphql-validation-transformers/common": "^1.0.6"
    }
 }
