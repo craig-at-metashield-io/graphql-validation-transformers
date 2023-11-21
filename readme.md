@@ -19,6 +19,7 @@ type GenericEntityExample @model()  {
    tag: String  @xstring(regex: "^[0-9A-Z]{8}$")           
 }
 ```
+see the package's [`readme.md`](packages/string/readme.md) files for more details
 
 ## Numbers 
 
@@ -35,7 +36,7 @@ type GenericEntityExample @model()  {
 }
 ```
 
-see the packages' `readme.md` files for more details
+see the package's [`readme.md`](packages/number/readme.md) files for more details
 
 ## Suggestions & Improvements
 
