@@ -1,5 +1,5 @@
 import { TransformerSchemaVisitStepContextProvider, } from '@aws-amplify/graphql-transformer-interfaces';
-import { DirectiveNode, ObjectTypeDefinitionNode, InterfaceTypeDefinitionNode, FieldDefinitionNode } from 'graphql';
+import { DirectiveNode, ObjectTypeDefinitionNode, InterfaceTypeDefinitionNode, FieldDefinitionNode, Kind } from 'graphql';
 
 import { IAbstractArguments, AbstractValidationTransformer } from '@graphql-validation-transformers/common';
 
@@ -39,7 +39,8 @@ export class StringValidationTransformer extends AbstractValidationTransformer<I
       this.assertAscending([{ arg: 'min', val: xargs.min }, { arg: 'max', val: xargs.max }]);
       
       // add to type's directive set
-      this.add(parent as ObjectTypeDefinitionNode, 'String', parent.name.value, field.name.value, xargs);      
+      const nullable = field.type.kind !== Kind.NON_NULL_TYPE;
+      this.add(parent as ObjectTypeDefinitionNode, 'String', parent.name.value, field.name.value, xargs, nullable);      
    }
 
    public generateValidation(field: string, args: IStringArguments): string {

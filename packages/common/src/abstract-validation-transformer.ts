@@ -1,7 +1,7 @@
 import { InvalidDirectiveError, TransformerPluginBase, MappingTemplate, InputObjectDefinitionWrapper } from '@aws-amplify/graphql-transformer-core';
 import { TransformerContextProvider, TransformerSchemaVisitStepContextProvider, TransformerTransformSchemaStepContextProvider } from '@aws-amplify/graphql-transformer-interfaces';
 import { ObjectTypeDefinitionNode, InterfaceTypeDefinitionNode, TypeNode, Kind, ArgumentNode, FieldDefinitionNode, DirectiveNode } from 'graphql';
-import { printBlock, iff, not, raw, parens, and, ref } from 'graphql-mapping-template';
+import { printBlock, iff, not, raw, parens, and, ref, or } from 'graphql-mapping-template';
 import { ModelResourceIDs } from 'graphql-transformer-common';
 
 export interface IAbstractArguments { }
@@ -56,14 +56,14 @@ export abstract class AbstractValidationTransformer<T extends IAbstractArguments
 
    protected abstract generateValidation(field: string, args: IAbstractArguments): string;
    
-   protected add(xparent: ObjectTypeDefinitionNode , type: string, xtype: string, xfield: string, xargs: IAbstractArguments) {
+   protected add(xparent: ObjectTypeDefinitionNode, type: string, xtype: string, xfield: string, xargs: IAbstractArguments, nullable: boolean) {
       const vfield = `$ctx.args.input.${xfield}`;
       const vlogic = this.generateValidation(vfield, xargs);
 
       const jargs = JSON.stringify(xargs).replace(/"/g, "'");
-
+      
       const expression = iff(
-         and([not(parens(raw(vlogic)))]),
+         or([...(nullable ? [parens(raw(`$util.isNull(${vfield})`))] : []), not(parens(raw(vlogic)))]),
          ref(`util.error('${this.xname} assertion error on ${xfield} in ${xtype}',  'AssertionError', null,
                {
                   "type": "assertion",

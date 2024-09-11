@@ -9,17 +9,12 @@
       "noImplicitAny": true,
       "strict": true,
       "skipLibCheck": true,
-      "esModuleInterop": true,
-      "rootDir": "./src",
-      "outDir": "./dist"
+      "esModuleInterop": true
    },
    "exclude": [
-      "node_modules", 
-      "dist", 
-      "src/__tests__/**/*"      
-   ],
-   "files": [
-      "./src/index.ts"
+      "node_modules",
+      "packages/**/dist/*",
+
    ],
    "references": [
       {

@@ -1,12 +1,12 @@
 {
    "name": "@graphql-validation-transformers/number",
-   "version": "1.0.6",
+   "version": "1.0.8",
    "description": "Amplify GraphQL number field validation",
    "main": "dist/index.js",
    "scripts": {
       "build": "tsc --build"
    },
    "dependencies": {
-      "@graphql-validation-transformers/common": "^1.0.6"
+      "@graphql-validation-transformers/common": "^1.0.8"
    }
 }
